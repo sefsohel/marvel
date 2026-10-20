@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Template workbench | EPIC CARD STUDIO</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>if(location.protocol==="file:"){document.addEventListener("DOMContentLoaded",function(){document.body.insertAdjacentHTML("afterbegin","<div class=\"file-warning\" role=\"alert\">This site uses ES modules and must be served over http. Run a local server (see README), do not open the file directly.</div>");});}</script>
+</head>
+<body data-page="settings" class="admin">
+  <div class="grain" aria-hidden="true"></div>
+  <div id="locked-screen" class="locked-screen"><p>Administrator access required.</p><a class="btn btn-ghost" href="index.html">BACK TO LANDING</a></div>
+
+  <div id="admin-root" hidden>
+    <header class="admin-top">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>EPIC CARD STUDIO <span class="brand-sub">WORKBENCH</span></a>
+      <div class="admin-actions">
+        <span class="chip" id="conn-status" role="status">Checking Firebase…</span>
+        <button type="button" class="btn btn-small btn-ghost" id="btn-init">INITIALIZE MISSING</button>
+        <button type="button" class="btn btn-small btn-primary" id="btn-zip">EXPORT ALL HTML (.ZIP)</button>
+        <button type="button" class="btn btn-small btn-ghost" id="btn-lock">LOCK</button>
+      </div>
+    </header>
+    <main class="admin-main">
+      <h1 class="admin-title">Template workbench</h1>
+      <p class="admin-lead">Four independent templates, each stored in Cloud Firestore with its own version history. Uploading or editing never overwrites anything until you press Save.</p>
+      <section class="tgrid" id="template-grid" aria-label="Templates"></section>
+      <section class="notes cut-box" aria-label="Notes">
+        <h2>Before you save</h2>
+        <ul>
+          <li>Template code is trusted content. In previews and PDFs, scripts are <strong>not executed</strong>, and external images, fonts or stylesheets may behave differently than in a normal browser tab.</li>
+          <li>Design inside one fixed-size root (default 640 &times; 960 px). To use another size add <code>&lt;meta name="card-size" content="WIDTHxHEIGHT"&gt;</code>.</li>
+          <li>The PDF renderer ignores <code>clip-path</code>, filters and blend modes. Prefer inline SVG for angled shapes.</li>
+          <li>The password gate only hides this screen. It does not secure Firestore. See the README.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="workbench" class="workbench" aria-labelledby="wb-title">
+    <header class="wb-head">
+      <div class="wb-heading">
+        <h2 id="wb-title">Editing <span id="wb-filename">-</span></h2>
+        <p id="wb-meta" class="wb-meta"></p>
+      </div>
+      <div class="wb-indicators">
+        <span class="chip" id="wb-count">0 characters</span>
+        <span class="chip" id="wb-dirty">Saved</span>
+        <span class="chip" id="wb-source"></span>
+      </div>
+    </header>
+    <div class="wb-tabs" role="tablist" aria-label="Templates" id="wb-tabs"></div>
+    <div class="wb-body">
+      <section class="wb-left">
+        <div class="wb-editor" id="wb-editor-pane">
+          <label for="wb-code" class="wb-label">HTML source</label>
+          <textarea id="wb-code" spellcheck="false" wrap="off" autocomplete="off" autocapitalize="off" aria-describedby="wb-validation"></textarea>
+          <p id="wb-validation" class="wb-validation" role="status" aria-live="polite"></p>
+        </div>
+        <div class="wb-history" id="wb-history-pane" hidden>
+          <div class="wb-history-head"><h3>Version history</h3><button type="button" class="btn btn-small btn-ghost" id="wb-history-close">BACK TO EDITOR</button></div>
+          <p class="wb-note">Each save archives the version it replaces. Restoring archives the current version first, so nothing is lost.</p>
+          <ul id="wb-history-list" class="history-list"></ul>
+        </div>
+      </section>
+      <section class="wb-right" aria-label="Live A4 preview">
+        <div id="wb-banner" class="wb-banner" hidden></div>
+        <div id="wb-preview"></div>
+        <p class="wb-note">A4 portrait, 210 &times; 297 mm. Updates as you type; scripts do not run.</p>
+      </section>
+    </div>
+    <footer class="wb-foot">
+      <div class="wb-foot-left">
+        <button type="button" class="btn btn-small btn-ghost" id="wb-upload">UPLOAD HTML</button>
+        <button type="button" class="btn btn-small btn-ghost" id="wb-starter">LOAD STARTER</button>
+        <button type="button" class="btn btn-small btn-ghost" id="wb-download">DOWNLOAD DRAFT</button>
+        <button type="button" class="btn btn-small btn-ghost" id="wb-history-btn">HISTORY</button>
+      </div>
+      <div class="wb-foot-right">
+        <button type="button" class="btn btn-small btn-ghost" id="wb-cancel">CANCEL</button>
+        <button type="button" class="btn btn-small btn-primary" id="wb-save">SAVE TO FIREBASE</button>
+      </div>
+    </footer>
+  </dialog>
+
+  <input type="file" id="file-input" accept=".html,.htm,text/html" hidden>
+
+  <dialog id="confirm-dialog" class="gate cut-box" aria-labelledby="confirm-title">
+    <div class="gate-form">
+      <h2 id="confirm-title">Confirm</h2>
+      <p id="confirm-text" class="gate-lead"></p>
+      <div class="gate-actions">
+        <button type="button" class="btn btn-ghost" id="confirm-no">CANCEL</button>
+        <button type="button" class="btn btn-primary" id="confirm-yes">CONFIRM</button>
+      </div>
+    </div>
+  </dialog>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

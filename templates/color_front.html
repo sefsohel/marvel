@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=640">
+<meta name="card-size" content="640x960">
+<title>Color Front</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Card template. Design inside the fixed-size .card root (640 x 960 px).
+   Keep it self-contained: inline SVG and data: URIs export most reliably.
+   Avoid clip-path, filters and blend modes: the PDF renderer ignores them. */
+html,body{margin:0;padding:0;background:#fff}
+*{box-sizing:border-box}
+.card{position:relative;width:640px;height:960px;overflow:hidden;font-family:'Rajdhani','Arial Narrow',Arial,sans-serif;background:#12062e;}
+.card svg.art{position:absolute;left:0;top:0;width:640px;height:960px}
+.t{position:absolute;margin:0}
+
+.no{left:46px;top:42px;font-size:20px;font-weight:700;letter-spacing:4px;color:#b8ff2c}
+.ed{right:46px;top:42px;font-size:20px;font-weight:700;letter-spacing:4px;color:#7df3ff;text-align:right}
+.name{left:0;width:640px;top:640px;text-align:center;font-size:76px;line-height:.95;font-weight:700;letter-spacing:3px;color:#fff;text-shadow:0 0 18px rgba(255,46,166,.7)}
+.sub{left:0;width:640px;top:735px;text-align:center;font-size:24px;font-weight:600;letter-spacing:5px;color:#e2c8ff}
+.stat{width:160px;text-align:center;top:812px}
+.stat b{display:block;font-size:48px;line-height:1;color:#fff}
+.stat span{display:block;font-size:17px;font-weight:600;letter-spacing:4px;color:#b8ff2c}
+.foot{left:0;width:640px;top:893px;text-align:center;font-size:16px;font-weight:600;letter-spacing:6px;color:#a687ff}
+
+</style>
+</head>
+<body>
+<div class="card">
+<svg class="art" viewBox="0 0 640 960" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#12062e"/><stop offset=".45" stop-color="#4a14c9"/><stop offset="1" stop-color="#12062e"/></linearGradient>
+<radialGradient id="orb" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#fff3a0"/><stop offset=".45" stop-color="#ff5bb0"/><stop offset="1" stop-color="#7a1fe0"/></radialGradient>
+<linearGradient id="win" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b0f86"/><stop offset=".6" stop-color="#8a2be2"/><stop offset="1" stop-color="#ff2ea6"/></linearGradient>
+<linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b8ff2c"/><stop offset=".5" stop-color="#7df3ff"/><stop offset="1" stop-color="#ff2ea6"/></linearGradient>
+<clipPath id="winclip"><polygon points="78,92 596,92 596,578 562,612 44,612 44,126"/></clipPath>
+</defs>
+<rect width="640" height="960" fill="url(#bg)"/>
+<g fill="#fff" opacity=".07"><polygon points="320,350 1220.0,350.0 1206.3,506.3"/><polygon points="320,350 1165.7,657.8 1099.4,800.0"/><polygon points="320,350 1009.4,928.5 898.5,1039.4"/><polygon points="320,350 770.0,1129.4 627.8,1195.7"/><polygon points="320,350 476.3,1236.3 320.0,1250.0"/><polygon points="320,350 163.7,1236.3 12.2,1195.7"/><polygon points="320,350 -130.0,1129.4 -258.5,1039.4"/><polygon points="320,350 -369.4,928.5 -459.4,800.0"/><polygon points="320,350 -525.7,657.8 -566.3,506.3"/><polygon points="320,350 -580.0,350.0 -566.3,193.7"/><polygon points="320,350 -525.7,42.2 -459.4,-100.0"/><polygon points="320,350 -369.4,-228.5 -258.5,-339.4"/><polygon points="320,350 -130.0,-429.4 12.2,-495.7"/><polygon points="320,350 163.7,-536.3 320.0,-550.0"/><polygon points="320,350 476.3,-536.3 627.8,-495.7"/><polygon points="320,350 770.0,-429.4 898.5,-339.4"/><polygon points="320,350 1009.4,-228.5 1099.4,-100.0"/><polygon points="320,350 1165.7,42.2 1206.3,193.7"/></g>
+<polygon points="48,18 622,18 622,912 592,942 18,942 18,48" fill="none" stroke="url(#edge)" stroke-width="4"/>
+<polygon points="54,30 610,30 610,906 586,930 30,930 30,54" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+<polygon points="78,92 596,92 596,578 562,612 44,612 44,126" fill="url(#win)"/>
+<g clip-path="url(#winclip)">
+<g fill="#fff" opacity=".12"><polygon points="320,340 1016.5,409.9 983.5,563.1"/><polygon points="320,340 917.2,705.2 821.0,828.9"/><polygon points="320,340 699.6,928.1 559.2,997.8"/><polygon points="320,340 406.9,1034.6 250.1,1036.5"/><polygon points="320,340 96.9,1003.5 -45.2,937.2"/><polygon points="320,340 -168.9,841.0 -268.1,719.6"/><polygon points="320,340 -337.8,579.2 -374.6,426.9"/><polygon points="320,340 -376.5,270.1 -343.5,116.9"/><polygon points="320,340 -277.2,-25.2 -181.0,-148.9"/><polygon points="320,340 -59.6,-248.1 80.8,-317.8"/><polygon points="320,340 233.1,-354.6 389.9,-356.5"/><polygon points="320,340 543.1,-323.5 685.2,-257.2"/><polygon points="320,340 808.9,-161.0 908.1,-39.6"/><polygon points="320,340 977.8,100.8 1014.6,253.1"/></g>
+<circle cx="320" cy="340" r="190" fill="none" stroke="#7df3ff" stroke-width="3" opacity=".7"/>
+<circle cx="320" cy="340" r="150" fill="url(#orb)"/>
+<circle cx="320" cy="340" r="225" fill="none" stroke="#b8ff2c" stroke-width="2" stroke-dasharray="6 14" opacity=".8"/>
+<polygon points="320,140 372,300 540,300 404,396 456,556 320,458 184,556 236,396 100,300 268,300" fill="#12062e" opacity=".55"/>
+<polygon points="352,130 268,360 330,360 292,560 420,300 352,300" fill="#7df3ff"/>
+<polygon points="352,130 268,360 330,360 292,560 420,300 352,300" fill="none" stroke="#fff" stroke-width="3"/>
+<polygon points="44,520 200,430 330,500 470,420 596,500 596,612 44,612" fill="#12062e" opacity=".7"/>
+<circle cx="90" cy="170" r="2.2" fill="#fff" opacity="0.9"/><circle cx="540" cy="150" r="1.8" fill="#fff" opacity="0.8"/><circle cx="130" cy="470" r="1.6" fill="#fff" opacity="0.7"/><circle cx="520" cy="430" r="2.4" fill="#fff" opacity="0.9"/><circle cx="80" cy="330" r="1.4" fill="#fff" opacity="0.6"/><circle cx="580" cy="300" r="1.6" fill="#fff" opacity="0.7"/><circle cx="250" cy="150" r="1.4" fill="#fff" opacity="0.6"/><circle cx="420" cy="520" r="1.8" fill="#fff" opacity="0.8"/><circle cx="300" cy="555" r="1.2" fill="#fff" opacity="0.6"/>
+</g>
+<polygon points="78,92 596,92 596,578 562,612 44,612 44,126" fill="none" stroke="#fff" stroke-width="3"/>
+<polygon points="60,640 580,640 604,664 604,830 36,830 36,664" fill="none"/>
+<polygon points="80,628 580,628 580,758 560,778 60,778 60,648" fill="#12062e" opacity=".78"/>
+<polygon points="80,628 580,628 580,758 560,778 60,778 60,648" fill="none" stroke="#ff2ea6" stroke-width="3"/>
+<rect x="60" y="790" width="520" height="6" fill="#b8ff2c"/>
+<polygon points="74,806 220,806 220,868 206,882 60,882 60,820" fill="#ffffff" fill-opacity=".1" stroke="#fff" stroke-opacity=".5" stroke-width="2"/>
+<polygon points="254,806 400,806 400,868 386,882 240,882 240,820" fill="#ffffff" fill-opacity=".1" stroke="#fff" stroke-opacity=".5" stroke-width="2"/>
+<polygon points="434,806 580,806 580,868 566,882 420,882 420,820" fill="#ffffff" fill-opacity=".1" stroke="#fff" stroke-opacity=".5" stroke-width="2"/>
+</svg>
+<p class="t no">NO. 001</p>
+<p class="t ed">COLOR EDITION</p>
+<h1 class="t name">ASTRAL<br>VANGUARD</h1>
+<div class="t stat" style="left:60px"><b>98</b><span>POWER</span></div>
+<div class="t stat" style="left:240px"><b>87</b><span>SPEED</span></div>
+<div class="t stat" style="left:420px"><b>100</b><span>AURA</span></div>
+<p class="t foot">EPIC CARD STUDIO · FRONT</p>
+</div>
+</body>
+</html>

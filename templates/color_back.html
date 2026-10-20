@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=640">
+<meta name="card-size" content="640x960">
+<title>Color Back</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Card template. Design inside the fixed-size .card root (640 x 960 px).
+   Keep it self-contained: inline SVG and data: URIs export most reliably.
+   Avoid clip-path, filters and blend modes: the PDF renderer ignores them. */
+html,body{margin:0;padding:0;background:#fff}
+*{box-sizing:border-box}
+.card{position:relative;width:640px;height:960px;overflow:hidden;font-family:'Rajdhani','Arial Narrow',Arial,sans-serif;background:#12062e;}
+.card svg.art{position:absolute;left:0;top:0;width:640px;height:960px}
+.t{position:absolute;margin:0}
+
+.mark{left:0;width:640px;top:408px;text-align:center;font-size:58px;font-weight:700;letter-spacing:6px;color:#fff;text-shadow:0 0 16px rgba(125,243,255,.8)}
+.mark2{left:0;width:640px;top:468px;text-align:center;font-size:22px;font-weight:600;letter-spacing:9px;color:#b8ff2c}
+.top{left:0;width:640px;top:46px;text-align:center;font-size:20px;font-weight:700;letter-spacing:7px;color:#7df3ff}
+.bot{left:0;width:640px;top:880px;text-align:center;font-size:16px;font-weight:600;letter-spacing:5px;color:#a687ff}
+
+</style>
+</head>
+<body>
+<div class="card">
+<svg class="art" viewBox="0 0 640 960" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#12062e"/><stop offset=".5" stop-color="#5b1fd6"/><stop offset="1" stop-color="#ff2ea6"/></linearGradient>
+<linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b8ff2c"/><stop offset=".5" stop-color="#7df3ff"/><stop offset="1" stop-color="#ff2ea6"/></linearGradient>
+<pattern id="lat" width="64" height="64" patternUnits="userSpaceOnUse"><polygon points="32,6 58,32 32,58 6,32" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.5"/><circle cx="32" cy="32" r="2.5" fill="#fff" fill-opacity=".3"/></pattern>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#12062e" stop-opacity=".95"/><stop offset="1" stop-color="#12062e" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="640" height="960" fill="url(#bg)"/>
+<rect width="640" height="960" fill="url(#lat)"/>
+<circle cx="320" cy="440" r="290" fill="url(#glow)"/>
+<polygon points="536.5,565.0 320.0,690.0 103.5,565.0 103.5,315.0 320.0,190.0 536.5,315.0" fill="none" stroke="#7df3ff" stroke-width="2"/><polygon points="497.5,542.5 320.0,645.0 142.5,542.5 142.5,337.5 320.0,235.0 497.5,337.5" fill="none" stroke="#ff2ea6" stroke-width="3"/><polygon points="458.6,520.0 320.0,600.0 181.4,520.0 181.4,360.0 320.0,280.0 458.6,360.0" fill="none" stroke="#b8ff2c" stroke-width="4"/><polygon points="419.6,497.5 320.0,555.0 220.4,497.5 220.4,382.5 320.0,325.0 419.6,382.5" fill="none" stroke="#ffffff" stroke-width="2"/>
+<polygon points="320,200 344,416 540,440 344,464 320,680 296,464 100,440 296,416" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>
+<polygon points="48,18 622,18 622,912 592,942 18,942 18,48" fill="none" stroke="url(#edge)" stroke-width="4"/>
+<polygon points="54,30 610,30 610,906 586,930 30,930 30,54" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+<path d="M60 110 H260 M380 110 H580 M60 850 H260 M380 850 H580" stroke="#7df3ff" stroke-width="2" fill="none" opacity=".7"/>
+</svg>
+<p class="t top">COLOR EDITION</p>
+<p class="t mark">EPIC CARD</p>
+<p class="t mark2">STUDIO</p>
+<p class="t bot">BACK · NO. 001</p>
+</div>
+</body>
+</html>
