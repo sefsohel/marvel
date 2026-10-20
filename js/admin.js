@@ -402,7 +402,16 @@ $("#btn-init").addEventListener("click", async (e) => {
     await refreshAll();
     const missing = TEMPLATES.filter((t) => cards.get(t.id).status === "missing");
     const broken = TEMPLATES.filter((t) => cards.get(t.id).status === "error");
-    if (broken.length) throw new Error("Some templates could not be checked, so nothing was initialized. Fix the Firebase connection first.");
+   if (broken.length) {
+  const details = broken
+    .map((t) => {
+      const error = cards.get(t.id)?.error || "Unknown error";
+      return `${t.filename}: ${error}`;
+    })
+    .join("\n");
+
+  throw new Error(`Firebase check failed:\n${details}`);
+}
     if (!missing.length) { showToast("All four templates already exist in Firebase. Nothing to initialize.", "info"); return; }
     if (!(await confirmAction({ title: "Initialize templates", message: `Save the bundled starter for ${missing.map((t) => t.filename).join(", ")} to Firebase? Existing templates are never touched.`, confirmLabel: "SAVE STARTERS" }))) return;
     for (const t of missing) { await saveTemplate(t.id, t.filename, await fetchStarter(t.id)); }
